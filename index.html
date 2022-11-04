@@ -1,1 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300&display=swap" rel="stylesheet">
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+
+    <link rel="stylesheet" href="./Assets/css/style.css"/>
+</head>
+
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-light bg-dark text-white">
+        <span class="navbar-brand mb-0 h1">5-Day Weather Forecast</span>
+    </nav>
+   
+    <div class="container">
+        <div class="row">
+    <!-- Search Form -->
+            <div class="col">
+                <form>
+                    <div class="form-group">
+                        <label for="Search">Search for a city:</label>
+                        <input type="search" class="form-control" id="exampleFormControlInput1" placeholder="city,country">
+                        <button class="btn btn-primary" id="search-btn" type="submit">Search</button>
+                    </div>      
+            </div>
+        </div>
+    </div>
+
+      <script src="./Assets/js/script.js"></script>
+</body>
+
+</html>
