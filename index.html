@@ -24,31 +24,29 @@
     </nav>
    
     <div class="container">
-        <div class="row">
-            <!-- Search Form -->
-            <div class="col">
-                <form>
-                    <div class="form-group">
-                        <label for="Search">Search for a city:</label>
-                        <input type="search" class="form-control" id="exampleFormControlInput1" placeholder="City">
-                        <button class="btn btn-primary" id="search-btn" type="submit">Search</button>
-                    </div>      
-            </div>
-            <!-- Current Weather -->
-            <div class="container-fluid rounded-lg border-left border-bottom border-dark"></div>
 
-            <!-- 5 Day Forecast -->
-            <div class="container "></div>
-            <h3>5 Day Forecast:</h3>
-            <!-- <div class="card" style="width: 18rem;"> -->
-                <!-- <div class="card-body"> -->
-                  <!-- <h5 class="card-title">Special title treatment</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
-                </div>
-              </div>
-                
-        </div>
+       <!-- Search Form -->
+        <form>
+            <div class="form-group border-bottom border-dark my-4">
+                <label for="Search">Search for a city:</label>
+                <input type="search" class="form-control" id="exampleFormControlInput1" placeholder="City">
+                <button class="btn btn-primary mx-1 my-3" id="search-btn" type="submit">Search</button>
+            </div>      
+        </form>
+
+        <!-- Current Weather -->
+        <div class="container-fluid rounded-lg border-top border-right border-bottom border-left border-dark" id="hide-current"></div>
+
+        <!-- 5 Day Forecast -->
+        <div class="d-flex justify-content-center"></div>
+        <!-- <section>
+            <div class="card" id="hide-forecast"></div>  
+        </section> -->
     </div>
+
+    
+        
+            
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
       <script src="./Assets/js/script.js"></script>

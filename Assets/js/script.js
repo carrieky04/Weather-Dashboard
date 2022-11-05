@@ -1,6 +1,6 @@
 var searchBtn = document.querySelector('#search-btn');
 var currentWeather = document.querySelector('.container-fluid');
-var fiveDayWeather = document.querySelector('.container');
+var fiveDayWeather = document.querySelector('.d-flex');
 
 // console.log('test1')
 function getWeather(event) {
@@ -51,17 +51,17 @@ function displayCurrentWeather (forecast) {
 
      var nameText = document.createElement('div');
      nameText.innerHTML = 
-     '<strong>City: </strong> ' + name + '<br/>';
+        name + '<br/>';
      currentWeather.append(nameText);
 
      var dateText = document.createElement('div');
      dateText.innerHTML = 
-     '<strong>Date: </strong> ' + newDate + '<br/>';
+        newDate + '<br/>';
      currentWeather.append(dateText);
 
      var image = document.createElement('img');
-     image.src = '/icons/' + icon + '.png' ;
-     currentWeather.append(image);
+    image.src = 'http://openweathermap.org/img/w/' + icon + '.png';
+    currentWeather.append(image);
 
      var tempText = document.createElement('div');
      tempText.innerHTML = 
@@ -77,6 +77,8 @@ function displayCurrentWeather (forecast) {
      humidityText.innerHTML = 
      '<strong>Humidity: </strong> ' + humidity + '&#37' + '<br/>';
      currentWeather.append(humidityText);
+
+     currentWeather.style.display = 'block';
 
     displayDayTwo(forecast);
 
@@ -102,9 +104,9 @@ function displayDayTwo(forecast) {
      '<strong>Date: </strong> ' + newDate + '<br/>';
      forecastCard.append(dateText);
 
-    //  var image = document.createElement('img');
-    //  image.src = '/icons/' + icon + '.png' ;
-    //  currentWeather.append(image);
+    var image = document.createElement('img');
+    image.src = 'http://openweathermap.org/img/w/' + icon + '.png';
+    forecastCard.append(image);
 
      var tempText = document.createElement('div');
      tempText.innerHTML = 
@@ -120,6 +122,8 @@ function displayDayTwo(forecast) {
      humidityText.innerHTML = 
      '<strong>Humidity: </strong> ' + humidity + '&#37' + '<br/>';
      forecastCard.append(humidityText);
+
+     fiveDayWeather.style.display = 'flex';
 
      displayDayThree(forecast);
 }
@@ -144,9 +148,9 @@ function displayDayThree(forecast) {
      '<strong>Date: </strong> ' + newDate + '<br/>';
      forecastCard.append(dateText);
 
-     var iconPic = document.createElement('div');
-     iconPic.innerHTML = icon 
-     forecastCard.append(iconPic);
+     var image = document.createElement('img');
+    image.src = 'http://openweathermap.org/img/w/' + icon + '.png';
+    forecastCard.append(image);
 
      var tempText = document.createElement('div');
      tempText.innerHTML = 
@@ -186,9 +190,9 @@ function displayDayFour(forecast) {
      '<strong>Date: </strong> ' + newDate + '<br/>';
      forecastCard.append(dateText);
 
-     var iconPic = document.createElement('div');
-     iconPic.innerHTML = icon 
-     forecastCard.append(iconPic);
+     var image = document.createElement('img');
+    image.src = 'http://openweathermap.org/img/w/' + icon + '.png';
+    forecastCard.append(image);
 
      var tempText = document.createElement('div');
      tempText.innerHTML = 
@@ -228,9 +232,9 @@ function displayDayFive(forecast) {
      '<strong>Date: </strong> ' + newDate + '<br/>';
      forecastCard.append(dateText);
 
-     var iconPic = document.createElement('div');
-     iconPic.innerHTML = icon 
-     forecastCard.append(iconPic);
+     var image = document.createElement('img');
+    image.src = 'http://openweathermap.org/img/w/' + icon + '.png';
+    forecastCard.append(image);
 
      var tempText = document.createElement('div');
      tempText.innerHTML = 
@@ -270,9 +274,9 @@ function displayDaySix(forecast) {
      '<strong>Date: </strong> ' + newDate + '<br/>';
      forecastCard.append(dateText);
 
-     var iconPic = document.createElement('div');
-     iconPic.innerHTML = icon 
-     forecastCard.append(iconPic);
+     var image = document.createElement('img');
+    image.src = 'http://openweathermap.org/img/w/' + icon + '.png';
+    forecastCard.append(image);
 
      var tempText = document.createElement('div');
      tempText.innerHTML = 
