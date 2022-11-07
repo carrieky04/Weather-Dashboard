@@ -1,14 +1,15 @@
 var searchBtn = document.querySelector('#search-btn');
 var currentWeather = document.querySelector('.container-fluid');
 var fiveDayWeather = document.querySelector('.d-flex');
+var city = document.querySelector('.form-control');
+var savedCities = document.querySelector('.saved-cities');
 
-// console.log('test1')
+
+
 function getWeather(event) {
     event.preventDefault();
     var inputEl = document.querySelector('#exampleFormControlInput1');
     var cityName = inputEl.value;
-
-    // console.log("in getAPI()");
     
     var requestCity = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=3&appid=7dd3c97591974f9fd579b18818499b7c"
     fetch(requestCity)
@@ -16,25 +17,20 @@ function getWeather(event) {
             return response.json();
         })
         .then(function (data) {
-            // console.log(data);
             var lat = data[0].lat;
             var lon = data[0].lon;
-            console.log(lat)
-            console.log(lon);
             var requestLatLon = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=7dd3c97591974f9fd579b18818499b7c&units=imperial";
                 fetch(requestLatLon)
                     .then(function (response) {
                         return response.json();
                     })
                     .then (function (data) {
-                        console.log(data);
                         forecast = data;
-                        // var temp = weather.list[0].main.temp
-                        // console.log(temp)
                         displayCurrentWeather(forecast);
                         
                     })                   
         })  
+    saveWeather();
 }
 
 searchBtn.addEventListener("click", getWeather);
@@ -45,9 +41,9 @@ function displayCurrentWeather (forecast) {
     var newDate = moment(date).format("MMMM Do YYYY");
     var icon = forecast.list[0].weather[0].icon
     var temp = forecast.list[0].main.temp
+    // var newTemp = Math.round(temp);
     var wind = forecast.list[0].wind.speed
     var humidity = forecast.list[0].main.humidity
-     console.log(name,date,icon,temp,wind,humidity);
 
      var nameText = document.createElement('div');
      nameText.innerHTML = 
@@ -81,21 +77,25 @@ function displayCurrentWeather (forecast) {
      currentWeather.style.display = 'block';
 
     displayDayTwo(forecast);
+    
 
 }
 
 function displayDayTwo(forecast) {
-    var name = forecast.city.name
+ 
     var date = forecast.list[8].dt_txt
     var newDate = moment(date).format("MMMM Do YYYY")
     var icon = forecast.list[8].weather[0].icon
     var temp = forecast.list[8].main.temp
     var wind = forecast.list[8].wind.speed
     var humidity = forecast.list[8].main.humidity
-     console.log(name,date,icon,temp,wind,humidity);
+
+    var headingEL = document.createElement('h3');
+    headingEL.innerHTML = '5 Day Weather Forecast:';
+    fiveDayWeather.append(headingEL);
 
     var forecastCard = document.createElement('div');
-    forecastCard.classList.add('card','bg-dark', 'text-light', 'mb-3', 'p-3')
+    forecastCard.classList.add('card','w-5','bg-dark', 'text-light', 'mb-3', 'p-3')
     fiveDayWeather.append(forecastCard);
 
 
@@ -129,17 +129,16 @@ function displayDayTwo(forecast) {
 }
 
 function displayDayThree(forecast) {
-    var name = forecast.city.name
+    
     var date = forecast.list[16].dt_txt
     var newDate = moment(date).format("MMMM Do YYYY");
     var icon = forecast.list[16].weather[0].icon
     var temp = forecast.list[16].main.temp
     var wind = forecast.list[16].wind.speed
     var humidity = forecast.list[16].main.humidity
-     console.log(name,date,icon,temp,wind,humidity);
 
     var forecastCard = document.createElement('div');
-    forecastCard.classList.add('card','width:18rem', 'bg-dark', 'text-light', 'mb-3', 'p-3')
+    forecastCard.classList.add('card','w-5', 'bg-dark', 'text-light', 'mb-3', 'p-3')
     fiveDayWeather.append(forecastCard);
 
 
@@ -171,17 +170,16 @@ function displayDayThree(forecast) {
 }
 
 function displayDayFour(forecast) {
-    var name = forecast.city.name
+    
     var date = forecast.list[24].dt_txt
     var newDate = moment(date).format("MMMM Do YYYY");
     var icon = forecast.list[24].weather[0].icon
     var temp = forecast.list[24].main.temp
     var wind = forecast.list[24].wind.speed
     var humidity = forecast.list[24].main.humidity
-     console.log(name,date,icon,temp,wind,humidity);
 
     var forecastCard = document.createElement('div');
-    forecastCard.classList.add('card','width:18rem', 'bg-dark', 'text-light', 'mb-3', 'p-3')
+    forecastCard.classList.add('card','w-5', 'bg-dark', 'text-light', 'mb-3', 'p-3')
     fiveDayWeather.append(forecastCard);
 
 
@@ -213,17 +211,16 @@ function displayDayFour(forecast) {
 }
 
 function displayDayFive(forecast) {
-    var name = forecast.city.name
+    
     var date = forecast.list[32].dt_txt
     var newDate = moment(date).format("MMMM Do YYYY")
     var icon = forecast.list[32].weather[0].icon
     var temp = forecast.list[32].main.temp
     var wind = forecast.list[32].wind.speed
     var humidity = forecast.list[32].main.humidity
-     console.log(name,date,icon,temp,wind,humidity);
 
     var forecastCard = document.createElement('div');
-    forecastCard.classList.add('card','width:18rem', 'bg-dark', 'text-light', 'mb-3', 'p-3')
+    forecastCard.classList.add('card','w-5', 'bg-dark', 'text-light', 'mb-3', 'p-3')
     fiveDayWeather.append(forecastCard);
 
 
@@ -255,17 +252,17 @@ function displayDayFive(forecast) {
 }
 
 function displayDaySix(forecast) {
-    var name = forecast.city.name
+   
     var date = forecast.list[39].dt_txt
     var newDate = moment(date).format("MMMM Do YYYY")
     var icon = forecast.list[39].weather[0].icon
     var temp = forecast.list[39].main.temp
     var wind = forecast.list[39].wind.speed
     var humidity = forecast.list[39].main.humidity
-     console.log(name,date,icon,temp,wind,humidity);
+    
 
     var forecastCard = document.createElement('div');
-    forecastCard.classList.add('card','width:18rem', 'bg-dark', 'text-light', 'mb-3', 'p-3')
+    forecastCard.classList.add('card','w-5','bg-dark', 'text-light', 'mb-3', 'p-3')
     fiveDayWeather.append(forecastCard);
 
 
@@ -293,10 +290,29 @@ function displayDaySix(forecast) {
      '<strong>Humidity: </strong> ' + humidity + '&#37' + '<br/>';
      forecastCard.append(humidityText);
 
+
 }
 
 
 
+function saveWeather() {
+    var cityText = city.value;
+    console.log(cityText);
+
+    if(!cityText) {
+        console.log("pls enter a city")
+        return;
+    } else {
+        localStorage.setItem("city",cityText);
+    };
+
+    
+    var savedCitiesBtn = document.createElement('button');
+   savedCitiesBtn.classList.add('btn', 'btn-secondary', 'm-3', 'p-3');
+    savedCitiesBtn.innerHTML = localStorage.getItem("city");
+    savedCities.append(savedCitiesBtn);
+   
+}
 
 
 
