@@ -1,8 +1,9 @@
 var searchBtn = document.querySelector('#search-btn');
-var currentWeather = document.querySelector('.container-fluid');
-var fiveDayWeather = document.querySelector('.d-flex');
-var city = document.querySelector('.form-control');
+var currentWeather = document.querySelector('#hide-current');
+var fiveDayWeather = document.querySelector('#fiveDayForecast');
+var inputArea = document.querySelector('.form-control');
 var savedCities = document.querySelector('.saved-cities');
+
 
 
 
@@ -29,7 +30,7 @@ function getWeather(event) {
                         displayCurrentWeather(forecast);
                         
                     })                   
-        })  
+        }) 
     saveWeather();
 }
 
@@ -48,6 +49,7 @@ function displayCurrentWeather (forecast) {
      var nameText = document.createElement('div');
      nameText.innerHTML = 
         name + '<br/>';
+    currentWeather.innerHTML = "";
      currentWeather.append(nameText);
 
      var dateText = document.createElement('div');
@@ -92,6 +94,7 @@ function displayDayTwo(forecast) {
 
     var headingEL = document.createElement('h3');
     headingEL.innerHTML = '5 Day Weather Forecast:';
+    fiveDayWeather.innerHTML = "";
     fiveDayWeather.append(headingEL);
 
     var forecastCard = document.createElement('div');
@@ -263,6 +266,7 @@ function displayDaySix(forecast) {
 
     var forecastCard = document.createElement('div');
     forecastCard.classList.add('card','w-5','bg-dark', 'text-light', 'mb-3', 'p-3')
+    // fiveDayWeather.innerHTML = "";
     fiveDayWeather.append(forecastCard);
 
 
@@ -296,9 +300,7 @@ function displayDaySix(forecast) {
 
 
 function saveWeather() {
-    var cityText = city.value;
-    console.log(cityText);
-
+    var cityText = inputArea.value;
     if(!cityText) {
         console.log("pls enter a city")
         return;
@@ -311,8 +313,19 @@ function saveWeather() {
    savedCitiesBtn.classList.add('btn', 'btn-secondary', 'm-3', 'p-3');
     savedCitiesBtn.innerHTML = localStorage.getItem("city");
     savedCities.append(savedCitiesBtn);
+
+    savedCitiesBtn.addEventListener("click", function(event) {
+
+    }
+    )
    
 }
+
+// inputArea.addEventListener("keydown", function(event) {
+//     if (event.key == 8 || event.key == 46) {
+//         console.log("deleted");
+//     }
+// });
 
 
 
