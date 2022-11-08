@@ -12,7 +12,7 @@ function getWeather(event) {
     var inputEl = document.querySelector('#exampleFormControlInput1');
     var cityName = inputEl.value;
     
-    var requestCity = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=3&appid=7dd3c97591974f9fd579b18818499b7c"
+    var requestCity = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=3&appid=7dd3c97591974f9fd579b18818499b7c"
     fetch(requestCity)
         .then(function (response) {
             return response.json();
