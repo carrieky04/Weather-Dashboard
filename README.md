@@ -20,7 +20,7 @@ No installation required.
 Please follow this link for the [Weather Dashboard]
 (https://carrieky04.github.io/Weather-Dashboard/)
     
-    ![screenshot](Assets/Images/screenshot.png)
+    ![screenshot](./Assets/Images/screenshot.png)
     
 
 ## Credits
