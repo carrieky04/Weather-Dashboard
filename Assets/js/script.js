@@ -4,7 +4,26 @@ var fiveDayWeather = document.querySelector('#fiveDayForecast');
 var inputArea = document.querySelector('.form-control');
 var savedCities = document.querySelector('.saved-cities');
 
+var cities = localStorage.getItem("city");
+cities = JSON.parse(cities)
+console.log(cities);
+if (cities == null) {
+    cities = [];
+}
 
+
+function renderBtn() {
+
+    savedCities.innerHTML = "";
+    for (i=0; i < cities.length; i++) {
+        var currentCity = cities[i];
+        var savedCitiesBtn = document.createElement('button');
+            savedCitiesBtn.classList.add('btn', 'btn-secondary', 'm-3', 'p-3');
+            savedCitiesBtn.innerHTML = currentCity;
+            savedCities.append(savedCitiesBtn);
+        }
+}
+ renderBtn();
 
 
 function getWeather(event) {
@@ -42,7 +61,6 @@ function displayCurrentWeather (forecast) {
     var newDate = moment(date).format("MMMM Do YYYY");
     var icon = forecast.list[0].weather[0].icon
     var temp = forecast.list[0].main.temp
-    // var newTemp = Math.round(temp);
     var wind = forecast.list[0].wind.speed
     var humidity = forecast.list[0].main.humidity
 
@@ -266,7 +284,6 @@ function displayDaySix(forecast) {
 
     var forecastCard = document.createElement('div');
     forecastCard.classList.add('card','w-5','bg-dark', 'text-light', 'mb-3', 'p-3')
-    // fiveDayWeather.innerHTML = "";
     fiveDayWeather.append(forecastCard);
 
 
@@ -305,27 +322,16 @@ function saveWeather() {
         console.log("pls enter a city")
         return;
     } else {
-        localStorage.setItem("city",cityText);
-    };
-
+        if (!cities.includes(cityText)) {
+            cities.push(cityText);
+            localStorage.setItem("city",JSON.stringify(cities));
+            renderBtn();
+    }}
     
-    var savedCitiesBtn = document.createElement('button');
-   savedCitiesBtn.classList.add('btn', 'btn-secondary', 'm-3', 'p-3');
-    savedCitiesBtn.innerHTML = localStorage.getItem("city");
-    savedCities.append(savedCitiesBtn);
-
-    savedCitiesBtn.addEventListener("click", function(event) {
-
-    }
-    )
-   
 }
 
-// inputArea.addEventListener("keydown", function(event) {
-//     if (event.key == 8 || event.key == 46) {
-//         console.log("deleted");
-//     }
-// });
+
+
 
 
 
